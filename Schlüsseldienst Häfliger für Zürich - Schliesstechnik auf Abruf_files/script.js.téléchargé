@@ -1,0 +1,16 @@
+$('.main-nav > span').click(function () {
+	$('.main-nav > ul').slideToggle();
+	$('.main-nav > span').toggleClass('open');
+	$('.main-nav > span > i').toggleClass('fa-bars fa-times');
+});
+
+$('.has-children').click(function () {
+	$(this).children('.sub-menu').slideToggle();
+	$(this).children('a').toggleClass('up');
+});
+
+$(window).resize(function () {
+	if ( $(window).width() > 950 ){
+		$('.main-nav > ul').removeAttr('style');
+	}
+});

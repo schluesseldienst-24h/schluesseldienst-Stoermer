@@ -1,0 +1,36 @@
+jQuery( document ).ready( function( $ ) {
+
+	// PDF Download
+	$("a[href$='.pdf']").on('click', function() {
+		var file =  this.href.lastIndexOf('/');
+		var titel = this.href.substring(file + 1);
+		ga('send', 'event', 'Download', 'PDF', titel);
+	});
+
+	// Kontakt: E-Mail Adresse
+	$("a[href^='mailto:']").on('click', function() {
+		var email = $(this).text();
+		ga('send', 'event', 'Kontakt', 'Mail', email);
+	});
+
+	// Kontakt: Telefonnummer
+	$("a[href^='tel:']").on('click', function() {
+		var nummer = $(this).text();
+		ga('send', 'event', 'Kontakt', 'Telefon', nummer);
+	});
+
+});
+
+var slideIndex = 0;
+carousel();
+
+function carousel() {
+    var x = document.getElementsByClassName("ourPartners");
+    for (var i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > x.length) {slideIndex = 1} 
+    x[slideIndex-1].style.display = "block"; 
+    setTimeout(carousel, 5000);
+}
